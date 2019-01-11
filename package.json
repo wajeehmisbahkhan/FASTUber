@@ -1,0 +1,25 @@
+{
+  "name": "fastuber",
+  "version": "1.0.0",
+  "description": "A transportation service for FASTians.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wajeehmisbahkhan/FASTUber.git"
+  },
+  "keywords": [
+    "FAST",
+    "Uber",
+    "Transportation",
+    "Careem"
+  ],
+  "author": "Wajeeh Misbah Khan && Muhammad Bilal Akmal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wajeehmisbahkhan/FASTUber/issues"
+  },
+  "homepage": "https://github.com/wajeehmisbahkhan/FASTUber#readme"
+}

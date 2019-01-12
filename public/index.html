@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FASTUber</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!--Firebase Script-->
+    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase-app.js"></script>
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase-auth.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-functions.js"></script> -->
+    <script src="js/firebase.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div class="login-page">
+        <h2>FASTUber</h2>
+        <div class="form">
+            <form class="register-form">
+                <input class="name" type="text" placeholder="Name..." autocomplete="name" required/>
+                <input class="password" type="password" placeholder="Password..." autocomplete="new-password" required/>
+                <input class="email" type="email" placeholder="Email Address..." autocomplete="email" required/>
+                <button id="register">Register</button>
+                <p class="message">Already registered? <a href="#">Sign In</a></p>
+            </form>
+            <form class="login-form">
+                <input class="email" type="email" placeholder="Email..." autocomplete="email" required/>
+                <input class="password" type="password" placeholder="Password..." autocomplete="current-password" required/>
+                <button id="login">Login</button>
+                <p class="message">Not registered? <a href="#">Create an account</a></p>
+            </form>
+        </div>
+    </div>
+    <div class="error-cover">
+        <div class="error-box">
+            <p id="error">It looks like something went wrong.</p>
+            <p>Report this bug at <a href="mailto:k173673@nu.edu.pk">k173673@nu.edu.pk</a></p>
+            <button class="main-button">Okay</button>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

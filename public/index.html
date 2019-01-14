@@ -27,24 +27,41 @@
                 <input class="name" type="text" placeholder="Name..." autocomplete="name" required/>
                 <input class="password" type="password" placeholder="Password..." autocomplete="new-password" required/>
                 <input class="email" type="email" placeholder="Email Address..." autocomplete="email" required/>
-                <button id="register">Register</button>
+                <button onclick="register()">Register</button>
                 <p class="message">Already registered? <a href="#">Sign In</a></p>
             </form>
             <form class="login-form">
-                <input class="email" type="email" placeholder="Email..." autocomplete="email" required/>
-                <input class="password" type="password" placeholder="Password..." autocomplete="current-password" required/>
+                <div class="form-row">
+                    <label for="email">Email</label>
+                    <input class="form-control email" type="email" placeholder="Email..." autocomplete="email" required/>
+                    <div class="invalid-feedback">
+                        <p class="message">No such email exists. <a href="#">Sign up!</a></p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="password">Password</label>
+                    <input class="form-control password" type="password" placeholder="Password..." autocomplete="current-password" required/>
+                    <div class="invalid-feedback">
+                        <p class="message">Invalid password. <a href="#">Forgot Password?</a></p>
+                    </div>
+                </div>
                 <button id="login">Login</button>
                 <p class="message">Not registered? <a href="#">Create an account</a></p>
             </form>
         </div>
     </div>
+    <div class="home">
+        Welcome <span class="user"></span>
+        <button class="btn btn-primary" onclick="logout()">Logout</button>
+    </div>
     <div class="error-cover">
         <div class="error-box">
             <p id="error">It looks like something went wrong.</p>
-            <p>Report this bug at <a href="mailto:k173673@nu.edu.pk">k173673@nu.edu.pk</a></p>
-            <button class="main-button">Okay</button>
+            <p>Report this bug at <a href="mailto:k173673@nu.edu.pk" onclick="sendBugMail()">k173673@nu.edu.pk</a></p>
+            <button class="main-button" onclick="hideError()">Okay</button>
         </div>
     </div>
     <script src="js/main.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>

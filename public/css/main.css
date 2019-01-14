@@ -39,3 +39,7 @@
 .main-button:hover,.form .main-button:active,.form .main-button:focus {
     background: #43A047;
 }
+
+.home {
+    display: none;
+}

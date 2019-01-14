@@ -22,9 +22,8 @@
 .form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
-  background: #f2f2f2;
+  /* background: #f2f2f2; */
   width: 100%;
-  border: 0;
   margin: 0 0 15px;
   padding: 15px;
   box-sizing: border-box;
@@ -47,10 +46,17 @@
 .form button:hover,.form button:active,.form button:focus {
   background: #43A047;
 }
+.form button:disabled {
+  cursor: default;
+  background: #D3D3D3;
+}
 .form .message {
   margin: 15px 0 0;
   color: #b3b3b3;
   font-size: 14px;
+}
+.form .invalid-feedback .message {
+  margin-top: -15px;
 }
 .form .message a {
   color: #4CAF50;

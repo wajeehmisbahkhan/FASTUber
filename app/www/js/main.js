@@ -48,3 +48,8 @@ function isOnline() {
       }
     }
 }
+
+//Home Page
+if (user.displayName) {
+    $('.home .user').html(user.displayName);
+}

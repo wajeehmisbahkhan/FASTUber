@@ -50,6 +50,11 @@ function authenticateEmail (email, form) {
                 //Disable Submission
                 form.submit.prop('disabled', true);
                 formError(form.emailBox, 'No such email exists. <a href="#">Sign up!</a>');
+                //Signup page shift
+                form.emailBox.parent().find('.message a').click(switchLogin);
+                registration.emailBox.val(email);
+                emailCheckTimer = 1; //Signals modification in value
+                registration.emailBox.focusout();
             } else if (form === registration) {
                 //Enable Submission
                 form.emailBox.removeClass('is-invalid');
@@ -148,10 +153,11 @@ registration.emailBox.focusout(function (e) {
     }
 });
 //After Submission
-$('.message a').click(function(e){
+$('.message a').click(switchLogin);
+function switchLogin (e) {
     e.preventDefault();
     $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-});
+}
 //Login
 $('#login').click(function (e) {
     //Check if anything is empty
@@ -209,7 +215,16 @@ $('#register').click(function () {
         password = registration.passwordBox.val(),
         email = registration.emailBox.val();
     //Create Email
-    auth.createUserWithEmailAndPassword(email, password).then(function () { signup = true; }).catch(function(error) {
+    auth.createUserWithEmailAndPassword(email, password).then(function (user) {
+        signup = true;
+        //Send name to database
+        user = firebase.auth().currentUser;
+        if (user) {
+            updateInformation(user, {displayName: name});
+        } else {
+            showError("Name Error", "There was an error while updating your name in the database.");
+        }
+    }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -218,9 +233,7 @@ $('#register').click(function () {
         button.find('span').css('visibility', 'visible');
     });
 
-    //Send name to database
 });
-
 
 //Logout
 function logout () {
@@ -233,36 +246,48 @@ function logout () {
 }
 
 //Check Authentication
-
 auth.onAuthStateChanged(function (user) {
     if (user) {
-        //Signed In Successfully
-        $('.login-page').hide();
-        $('.home').fadeIn();
-        $('input').val('');
-        $('.home .user').html(user.email);
-        //Remove Extra Stuff
-        loadingComplete(login.submit);
-        $.each(login, removePreviousErrors);
-        login.submit.prop('disabled', true);
-        login.submit.find('span').css('visibility', 'visible');
-        
-        loadingComplete(registration.submit);
-        $.each(registration, removePreviousErrors);
-        registration.submit.prop('disabled', true);
-        registration.submit.find('span').css('visibility', 'visible');
-        
-        //Unverified User
-        if (!user.emailVerification) {
-            //If signed up just now
-            if (signup) {
-                signup = false;
-                sendVerification(user);
+        user.reload().then(function () {
+            //Signed In Successfully
+            $('.login-page').hide();
+            $('.home').fadeIn();
+            $('input').val('');
+            $('.verify-email .email').html(user.email);
+            //Remove Extra Stuff
+            loadingComplete(login.submit);
+            $.each(login, removePreviousErrors);
+            login.submit.prop('disabled', true);
+            login.submit.find('span').css('visibility', 'visible');
+            
+            loadingComplete(registration.submit);
+            $.each(registration, removePreviousErrors);
+            registration.submit.prop('disabled', true);
+            registration.submit.find('span').css('visibility', 'visible');
+            
+            //Unverified User
+            if (!user.emailVerified) {
+                //If signed up just now
+                if (signup) {
+                    signup = false;
+                    sendVerification(user);
+                }
+                //Please Verify Email
+                $('.verify-email').fadeIn();
+                $('.verify-email a').click(function (e) {
+                    e.preventDefault();
+                    sendVerification(user);
+                    $(this).parent().html('Verification Email Resent.');
+                });
+            } else {
+                $('.verify-email').remove();
             }
-            //TODO: Display verify plis
-            $('.verify-email').fadeIn();
-            console.log(user);
-        }
+        }).catch(function () {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            showError(errorCode, errorMessage);
+        })
     } else {
         //Default Page (Or signed out)
         $('.home').hide();
@@ -288,6 +313,16 @@ function sendVerification(user) {
         showError(errorCode, errorMessage);
     });
 }
-//TODO: Forgot Password
 
-//TODO: Resend Verification
+//Update any information of the user
+function updateInformation (user, newInfo) {
+    if (newInfo) {
+        user.updateProfile(newInfo).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            showError(errorCode, errorMessage);
+        });
+    }
+}
+//TODO: Forgot Password - Login & Registration

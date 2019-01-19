@@ -12,4 +12,4 @@ function started () {
 }
 
 //Serve files from
-app.use(express.static('public'));
+app.use(express.static('app/www'));

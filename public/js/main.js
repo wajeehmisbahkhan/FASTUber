@@ -17,3 +17,36 @@ function sendBugMail() {
 function hideError() {
     $('error-cover').fadeOut();
 }
+
+showInternetStatus();
+
+window.addEventListener('offline', showInternetStatus);
+
+function showInternetStatus () {
+    if (!isOnline) {
+        showError(604, "This application does not function properly without an Internet connection.");
+    }
+}
+
+//CONNECTION
+function isOnline() {
+    var xhr = new XMLHttpRequest();
+    var file = "https://www.kirupa.com/blank.png";
+    var randomNum = Math.round(Math.random() * 10000);
+ 
+    xhr.open('HEAD', file + "?rand=" + randomNum, true);
+    xhr.send();
+     
+    xhr.addEventListener("readystatechange", processRequest, false);
+ 
+    function processRequest(e) {
+      if (xhr.readyState == 4) {
+        if (xhr.status >= 200 && xhr.status < 304) {
+            return true;
+        } else {
+            return false;
+        }
+      }
+    }
+}
+

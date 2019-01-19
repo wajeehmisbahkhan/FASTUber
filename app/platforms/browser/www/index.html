@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline';">
+    <title>FASTUber</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!--Firebase Script-->
+    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase-app.js"></script>
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase-auth.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-functions.js"></script> -->
+    <script src="js/firebase.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <!-- Cordova -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <!-- App -->
+    <div class="login-page">
+        <h2>FASTUber</h2>
+        <div class="form">
+            <form class="register-form" novalidate>
+                <div class="form-row">
+                    <label for="name">Name</label>
+                    <input class="name form-control" type="text" placeholder="Name..." autocomplete="name" required/>
+                    <div class="invalid-feedback">
+                        <p class="message">Name is required.</p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="name">Password</label>
+                    <input class="password form-control" type="password" placeholder="Password..." autocomplete="new-password" required/>
+                    <div class="invalid-feedback">
+                        <p class="message">A strong password is required.</p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="name">Email</label>
+                    <input class="email form-control" type="email" placeholder="Email Address..." autocomplete="email" required/>
+                    <div class="circle">
+                        <div class="loader"><div class="loader"><div class="loader"><div class="loader"></div></div></div></div>
+                    </div>
+                    <div class="invalid-feedback">
+                        <p class="message">Could not connect to the database.</p>
+                    </div>
+                </div>
+                <button id="register"><span>Register</span>
+                    <div class="circle">
+                        <div class="loader"><div class="loader"><div class="loader"><div class="loader"></div></div></div></div>
+                    </div> 
+                </button>
+                <p class="message">Already registered? <a href="#">Sign In</a></p>
+            </form>
+            <form class="login-form" novalidate>
+                <div class="form-row">
+                    <label for="email">Email</label>
+                    <input class="form-control email" type="email" placeholder="Email..." autocomplete="email" required/>
+                    <div class="circle">
+                        <div class="loader"><div class="loader"><div class="loader"><div class="loader"></div></div></div></div>
+                    </div>
+                    <div class="invalid-feedback">
+                        <p class="message">Could not connect to the database.</p>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="password">Password</label>
+                    <input class="form-control password" type="password" placeholder="Password..." autocomplete="current-password" required/>
+                    <div class="invalid-feedback">
+                        <p class="message">Could not connect to the database.</p>
+                    </div>
+                </div>
+                <button id="login"><span>Login</span>
+                <div class="circle">
+                    <div class="loader"><div class="loader"><div class="loader"><div class="loader"></div></div></div></div>
+                </div> 
+                </button>
+                <p class="message">Not registered? <a href="#">Create an account</a></p>
+            </form>
+        </div>
+    </div>
+    <div class="home">
+        <div class="alert alert-warning verify-email" role="alert">
+            A verification email has been sent to <span class="email"></span>. Didn't receive it? <a href="#">Resend confirmation email.</a>
+        </div>
+        Welcome <span class="user">Awesome User</span>!
+        <button class="btn btn-primary" onclick="logout()">Logout</button>
+    </div>
+    <div class="error-cover">
+        <div class="error-box">
+            <p id="error">It looks like something went wrong.</p>
+            <p>Report this bug at <a href="mailto:k173673@nu.edu.pk" onclick="sendBugMail()">k173673@nu.edu.pk</a></p>
+            <button class="main-button" onclick="hideError()">Okay</button>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

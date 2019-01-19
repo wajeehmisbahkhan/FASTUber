@@ -44,6 +44,7 @@ $('.message a').click(function(e){
 });
 //Login
 $('#login').click(function (e) {
+    
     var email = login.emailBox.val(),
         password = login.passwordBox.val();
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {

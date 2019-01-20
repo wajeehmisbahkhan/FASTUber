@@ -1,0 +1,27 @@
+{
+  "name": "com.fast.uber",
+  "version": "1.0.0",
+  "displayName": "FASTUber",
+  "cordova": {
+    "platforms": [
+      "browser",
+      "android"
+    ],
+    "plugins": {
+      "cordova-plugin-buildinfo": {},
+      "cordova-plugin-browsertab": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-universal-links-plugin": {}
+    }
+  },
+  "dependencies": {
+    "cordova-android": "^7.0.0",
+    "cordova-browser": "^5.0.4",
+    "cordova-plugin-browsertab": "0.2.0",
+    "cordova-plugin-buildinfo": "2.0.2",
+    "cordova-plugin-compat": "1.2.0",
+    "cordova-plugin-inappbrowser": "3.0.0",
+    "cordova-universal-links-plugin": "git+https://github.com/walteram/cordova-universal-links-plugin.git",
+    "cordova-universal-links-plugin-fix": "1.2.1"
+  }
+}

@@ -5,25 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline';">
+    <!--TODO: Modify for safety-->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline'; font-src * 'unsafe-inline'">
     <title>FASTUber</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/main.css">
-    <!--Firebase Script-->
-    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase-app.js"></script>
-    <!-- Add additional services that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase-auth.js"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-messaging.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-functions.js"></script> -->
-    <script src="js/firebase.js"></script>
-    <script src="js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
     <!-- Cordova -->
     <script type="text/javascript" src="cordova.js"></script>
+    <!--Firebase Script-->
+    <script type="text/javascript" src="js/firebase-app.js"></script>
+    <!-- Add additional services that you want to use -->
+    <script type="text/javascript" src="js/firebase-auth.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-functions.js"></script> -->
+    <script type="text/javascript" src="js/firebase.js"></script>
+    <script>
+        document.addEventListener('deviceready', firebaseInit);
+    </script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <!-- App -->
     <div class="login-page">
         <h2>FASTUber</h2>
@@ -92,7 +96,7 @@
             A verification email has been sent to <span class="email"></span>. Didn't receive it? <a href="#">Resend confirmation email.</a>
         </div>
         Welcome <span class="user">Awesome User</span>!
-        <button class="btn btn-primary" onclick="logout()">Logout</button>
+        <button class="btn btn-primary" id="logout">Logout</button>
     </div>
     <!--ERROR HANDLING-->
     <div class="screen-cover confirmation-cover">
@@ -105,11 +109,11 @@
     <div class="screen-cover error-cover">
         <div class="error-box">
             <p id="error">It looks like something went wrong.</p>
-            <p>Report this bug at <a href="mailto:k173673@nu.edu.pk" onclick="sendBugMail()">k173673@nu.edu.pk</a></p>
+            <p>Report this bug at <a href="mailto:k173673@nu.edu.pk">k173673@nu.edu.pk</a></p>
             <button class="main-button">Okay</button>
         </div>
     </div>
-    <script src="js/main.js"></script>
-    <script src="js/login.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>

@@ -1,0 +1,49 @@
+/*Errors*/
+.screen-cover {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.error-box, .confirmation-box {
+    min-width: 280px;
+    min-height: 150px;
+    padding: 20px;
+    background-color: aliceblue;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+  }
+.main-button:hover,.form .main-button:active,.form .main-button:focus {
+    background: #43A047;
+}
+/*Yes & No*/
+.confirmation-box .main-button {
+    margin: 4px 0;
+}
+
+.home {
+    display: none;
+}

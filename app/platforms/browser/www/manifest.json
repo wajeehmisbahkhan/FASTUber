@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "FASTUber",
+  "short_name": "FASTUber",
+  "version": "com.fast.uber",
+  "description": "A transportation app for FASTians.",
+  "author": "FASTUber Team",
+  "icons": [],
+  "start_url": "index.html"
+}

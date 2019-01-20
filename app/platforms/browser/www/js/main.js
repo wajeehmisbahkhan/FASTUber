@@ -22,6 +22,7 @@ function showError(code, message) {
     var error = "Code: " + code + "<br>" + message;
     $('#error').html(error);
 }
+$('.error-box a').click(sendBugMail);
 function sendBugMail() {
     var mail = $(this).attr('href');
     var message = $('#error').val();

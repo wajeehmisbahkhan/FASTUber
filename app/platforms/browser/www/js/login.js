@@ -1,3 +1,4 @@
+function loadApplication () {
 //Utility Variables
 var emailCheckTimer = null,
     signup = false,
@@ -241,14 +242,14 @@ $('#register').click(function () {
 });
 
 //Logout
-function logout () {
+$('#logout').click(function () {
     auth.signOut().catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
         showError(errorCode, errorMessage);
     });
-}
+});
 
 //Check Authentication
 auth.onAuthStateChanged(function (user) {
@@ -348,4 +349,6 @@ function confirmPasswordReset (e) {
 function sendResetPasswordEmail() {
     var emailAddress = resetPasswordEmail;
     return auth.sendPasswordResetEmail(emailAddress);
+}
+
 }

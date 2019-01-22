@@ -47,7 +47,8 @@ module.exports.metadata =
     "cordova-plugin-browsertab": "0.2.0",
     "cordova-plugin-inappbrowser": "3.0.0",
     "cordova-plugin-compat": "1.2.0",
-    "cordova-universal-links-plugin": "1.2.1"
+    "cordova-universal-links-plugin": "1.2.1",
+    "cordova-plugin-whitelist": "1.3.3"
 }
 // BOTTOM OF METADATA
 });

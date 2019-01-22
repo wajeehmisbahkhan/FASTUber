@@ -18,6 +18,9 @@
     },
     "cordova-universal-links-plugin": {
       "PACKAGE_NAME": "com.fast.uber"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.fast.uber"
     }
   },
   "dependent_plugins": {

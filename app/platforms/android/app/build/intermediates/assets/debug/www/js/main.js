@@ -34,13 +34,14 @@ $('.screen-cover button').click(function () {
     $('.screen-cover').fadeOut();
 });
 //CONNECTION
-window.addEventListener('offline', showInternetStatus);
+//Cordova documentation says document.addEventListener
+document.addEventListener('offline', showInternetStatus);
 
 //TODO: Improve checking
 function showInternetStatus () {
-    if (!isOnline()) {
-        showError("Connection Error", "This application does not function properly without an Internet connection.");
-    }
+    
+    showError("Connection Error", "This application does not function properly without an Internet connection.");
+    
 }
 
 function isOnline() {

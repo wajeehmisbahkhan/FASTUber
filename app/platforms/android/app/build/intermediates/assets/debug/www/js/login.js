@@ -2,8 +2,8 @@ function loadApplication () {
 //Utility Variables
 var emailCheckTimer = null,
     signup = false,
-    resetPasswordEmail;
-const auth = firebase.auth();
+    resetPasswordEmail,
+    auth = firebase.auth();
 //Pre-Submission Validations
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -78,11 +78,15 @@ function authenticateEmail (email, form) {
             }
         }
         loadingComplete(form.emailBox.next());
-    }).catch(function () {
+    }).catch(function (error) {
         //Bad input
         login.submit.prop('disabled', true);
         formError(login.emailBox, 'An error occured. Try again.');
         loadingComplete(form.emailBox.next());
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        showError(errorCode, errorMessage);
     });
 }
 function setEmailTimer (e, form) {

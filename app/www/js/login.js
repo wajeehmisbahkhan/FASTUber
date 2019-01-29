@@ -247,7 +247,9 @@ $('#register').click(function () {
 
 //Logout
 $('#logout').click(function () {
-    auth.signOut().catch(function (error) {
+    auth.signOut().then(function () {
+
+    }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -257,11 +259,13 @@ $('#logout').click(function () {
 
 //Check Authentication
 auth.onAuthStateChanged(function (user) {
+    hideLoading();
     if (user) {
         user.reload().then(function () {
             //Signed In Successfully
             $('.login-page').hide();
             $('.home').fadeIn();
+            $('body').addClass('white');
             $('input').val('');
             $('.verify-email .email').html(user.email);
             //Remove Extra Stuff
@@ -301,7 +305,9 @@ auth.onAuthStateChanged(function (user) {
     } else {
         //Default Page (Or signed out)
         $('.home').hide();
+        $('.page').hide();
         $('.login-page').fadeIn();
+        $('body').removeClass('white');
     }
 });
 

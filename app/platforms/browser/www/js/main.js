@@ -15,12 +15,17 @@ function showConfirmation(message) {
             reject(new Error("Unspecified response"));
         });
     });
-    
 }
 function showError(code, message) {
     $('.error-cover').css('display', 'flex');
     var error = "Code: " + code + "<br>" + message;
     $('#error').html(error);
+}
+function showLoading() {
+    $('.load-cover').css('display', 'flex');
+}
+function hideLoading() {
+    $('.load-cover').css('display', 'none');
 }
 $('.error-box a').click(sendBugMail);
 function sendBugMail() {
@@ -74,4 +79,18 @@ function main () {
             $('.home .user').html(user.displayName);
         }
     }
+}
+
+//Navbar
+$('nav').click(function (e) {
+    $('.navbar-collapse').show('slide');
+    e.stopImmediatePropagation();
+    $('html').click(hideNav);
+});
+$('.navbar-nav').click(hideNav);
+function hideNav (e) {
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    $('.navbar-collapse').hide('slide');
+    $('html').off('click');
 }

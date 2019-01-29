@@ -72,13 +72,20 @@ function isOnline() {
 //MAIN
 //Executes after user logs in
 function main () {
+    //Load Map
+    showLoading();
+    //MapInit is automatically called after loading map
+    //TODO: Hide API Key-->
+    $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBgnlRhU2n5lYuENs-E2dxc9tsAufQZp0g&callback=initMap')
+        .done(hideLoading)
+        .fail(showInternetStatus);
     //Home Page
-    var user = firebase.auth().currentUser;
-    if (user) {
-        if (user.displayName) {
-            $('.home .user').html(user.displayName);
-        }
-    }
+    // var user = firebase.auth().currentUser;
+    // if (user) {
+    //     if (user.displayName) {
+    //         $('.home .user').html(user.displayName);
+    //     }
+    // }
 }
 
 //Navbar

@@ -52,6 +52,18 @@
                         }
                     ]
                 }
+            },
+            "*-Info.plist": {
+                "parents": {
+                    "NSLocationWhenInUseUsageDescription": [
+                        {
+                            "xml": "<string>Need location access to find drivers nearby.</string>",
+                            "count": 1,
+                            "mode": "merge",
+                            "id": "config.xml"
+                        }
+                    ]
+                }
             }
         }
     },

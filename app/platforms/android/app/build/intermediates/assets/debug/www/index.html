@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--TODO: Modify for safety-->
+    <!--TODO: Modify for safety - Cordova Whitelist Plugin-->
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline'; font-src * 'unsafe-inline'">
     <title>FASTUber</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
 </head>
 <body>
     <!-- Cordova -->
@@ -28,6 +29,7 @@
         document.addEventListener('deviceready', firebaseInit);
     </script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <!-- App -->
     <div class="login-page">
         <h2>FASTUber</h2>
@@ -50,17 +52,15 @@
                 <div class="form-row">
                     <label for="name">Email</label>
                     <input class="email form-control" type="email" placeholder="Email Address..." autocomplete="email" required/>
-                    <div class="circle">
-                        <div class="loader"><div class="loader"><div class="loader"><div class="loader"></div></div></div></div>
-                    </div>
+                    <span class="spinner-border spinner-border-sm circle" role="status" aria-hidden="true"></span>
+                    <span class="sr-only circle">Loading...</span>
                     <div class="invalid-feedback">
                         <p class="message">Could not connect to the database.</p>
                     </div>
                 </div>
                 <button id="register"><span>Register</span>
-                    <div class="circle">
-                        <div class="loader"><div class="loader"><div class="loader"><div class="loader"></div></div></div></div>
-                    </div> 
+                    <span class="spinner-border spinner-border-sm circle" role="status" aria-hidden="true"></span>
+                    <span class="sr-only circle">Loading...</span> 
                 </button>
                 <p class="message">Already registered? <a href="#">Sign In</a></p>
             </form>
@@ -68,9 +68,8 @@
                 <div class="form-row">
                     <label for="email">Email</label>
                     <input class="form-control email" type="email" placeholder="Email..." autocomplete="email" required/>
-                    <div class="circle">
-                        <div class="loader"><div class="loader"><div class="loader"><div class="loader"></div></div></div></div>
-                    </div>
+                    <span class="spinner-border spinner-border-sm circle" role="status" aria-hidden="true"></span>
+                    <span class="sr-only circle">Loading...</span> 
                     <div class="invalid-feedback">
                         <p class="message">Could not connect to the database.</p>
                     </div>
@@ -82,21 +81,60 @@
                         <p class="message">Could not connect to the database.</p>
                     </div>
                 </div>
-                <button id="login"><span>Login</span>
-                <div class="circle">
-                    <div class="loader"><div class="loader"><div class="loader"><div class="loader"></div></div></div></div>
-                </div> 
+                <button id="login"><span>Login </span>
+                    <span class="spinner-border spinner-border-sm circle" role="status" aria-hidden="true"></span>
+                    <span class="sr-only circle">Loading...</span>
                 </button>
                 <p class="message">Not registered? <a href="#">Create an account</a></p>
             </form>
         </div>
     </div>
+    <!--Verification-->
+    <div class="alert alert-warning verify-email" role="alert">
+        A verification email has been sent to <span class="email"></span>. Didn't receive it? <a href="#">Resend confirmation email.</a>
+    </div>
+    <!--Content-->
     <div class="home">
-        <div class="alert alert-warning verify-email" role="alert">
-            A verification email has been sent to <span class="email"></span>. Didn't receive it? <a href="#">Resend confirmation email.</a>
+        <!--Menu-->
+        <nav class="navbar navbar-expand-* navbar-dark bg-success"> <!--TODO: Remove bg-sucess-->
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse bg-dark">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                <a class="nav-link" href="#"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp; Dashboard<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-user" aria-hidden="true"></i>&nbsp; My Profile</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp; Messages</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#" id="logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Logout</a>
+                </li>
+            </ul>
+            </div>
+        </nav>
+        <!-- Welcome <span class="user">Awesome User</span>! -->
+        <div id="map"></div>
+    </div>
+    <div class="page">
+        <!--Back Wrap-->
+        <nav class="navbar navbar-dark bg-success">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </button>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                <span class="nav-link page-title">Page Title</span>
+                </li>
+            </ul>
+        </nav>
+        <div class="content">
+            <!--Dynamically Loaded-->
         </div>
-        Welcome <span class="user">Awesome User</span>!
-        <button class="btn btn-primary" id="logout">Logout</button>
     </div>
     <!--ERROR HANDLING-->
     <div class="screen-cover confirmation-cover">
@@ -113,7 +151,16 @@
             <button class="main-button">Okay</button>
         </div>
     </div>
+    <div class="screen-cover load-cover">
+        <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+        </div>
+    </div>
     <script type="text/javascript" src="js/main.js"></script>
+    <script>
+        showLoading();
+    </script>
     <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
 </body>
 </html>

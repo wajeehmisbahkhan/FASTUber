@@ -15,12 +15,17 @@ function showConfirmation(message) {
             reject(new Error("Unspecified response"));
         });
     });
-    
 }
 function showError(code, message) {
     $('.error-cover').css('display', 'flex');
     var error = "Code: " + code + "<br>" + message;
     $('#error').html(error);
+}
+function showLoading() {
+    $('.load-cover').css('display', 'flex');
+}
+function hideLoading() {
+    $('.load-cover').css('display', 'none');
 }
 $('.error-box a').click(sendBugMail);
 function sendBugMail() {
@@ -67,11 +72,32 @@ function isOnline() {
 //MAIN
 //Executes after user logs in
 function main () {
+    //Load Map
+    showLoading();
+    //MapInit is automatically called after loading map
+    //TODO: Hide API Key-->
+    $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBgnlRhU2n5lYuENs-E2dxc9tsAufQZp0g&callback=initMap')
+        .done(hideLoading)
+        .fail(showInternetStatus);
     //Home Page
-    var user = firebase.auth().currentUser;
-    if (user) {
-        if (user.displayName) {
-            $('.home .user').html(user.displayName);
-        }
-    }
+    // var user = firebase.auth().currentUser;
+    // if (user) {
+    //     if (user.displayName) {
+    //         $('.home .user').html(user.displayName);
+    //     }
+    // }
+}
+
+//Navbar
+$('nav').click(function (e) {
+    $('.navbar-collapse').show('slide');
+    e.stopImmediatePropagation();
+    $('html').click(hideNav);
+});
+$('.navbar-nav').click(hideNav);
+function hideNav (e) {
+    e.stopImmediatePropagation();
+    e.preventDefault();
+    $('.navbar-collapse').hide('slide');
+    $('html').off('click');
 }

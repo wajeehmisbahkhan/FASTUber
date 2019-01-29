@@ -23,7 +23,7 @@ function displayLoading (element) {
     if (!element.hasClass('circle')) {
         element = element.find('.circle');
     }
-    element.show();
+    element.css('display', 'inline-block');
 }
 function loadingComplete (element) {
     if (!element.hasClass('circle')) {
@@ -176,10 +176,9 @@ $('#login').click(function (e) {
     }
     var button = $(this);
     //Already Processing
-    if (button.find('span').css('visibility') === 'hidden') {
+    if (button.find('span.circle').css('display') !== 'none') {
         return;
     }
-    button.find('span').css('visibility', 'hidden');
     displayLoading(button);
     var email = login.emailBox.val(),
         password = login.passwordBox.val();
@@ -197,7 +196,6 @@ $('#login').click(function (e) {
             showError(errorCode, errorMessage);
         }
         loadingComplete(button);
-        button.find('span').css('visibility', 'visible');
     });
 });
 //Register
@@ -216,14 +214,13 @@ $('#register').click(function () {
     });
     if (focused) //Empty field exists
         return;
-        //Loding
-        var button = $(this);
-        displayLoading(button);
-        button.find('span').css('visibility', 'hidden');
-        //Values
-        var name = registration.nameBox.val(),
-        password = registration.passwordBox.val(),
-        email = registration.emailBox.val();
+    //Loding
+    var button = $(this);
+    displayLoading(button);
+    //Values
+    var name = registration.nameBox.val(),
+    password = registration.passwordBox.val(),
+    email = registration.emailBox.val();
     //Create Email
     auth.createUserWithEmailAndPassword(email, password).then(function (user) {
         signup = true;
@@ -240,14 +237,15 @@ $('#register').click(function () {
         var errorMessage = error.message;
         showError(errorCode, errorMessage);
         loadingComplete(button);
-        button.find('span').css('visibility', 'visible');
     });
 
 });
 
 //Logout
 $('#logout').click(function () {
-    auth.signOut().catch(function (error) {
+    auth.signOut().then(function () {
+
+    }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -257,23 +255,23 @@ $('#logout').click(function () {
 
 //Check Authentication
 auth.onAuthStateChanged(function (user) {
+    hideLoading();
     if (user) {
         user.reload().then(function () {
             //Signed In Successfully
             $('.login-page').hide();
             $('.home').fadeIn();
+            $('body').addClass('white');
             $('input').val('');
             $('.verify-email .email').html(user.email);
             //Remove Extra Stuff
             loadingComplete(login.submit);
             $.each(login, removePreviousErrors);
             login.submit.prop('disabled', true);
-            login.submit.find('span').css('visibility', 'visible');
             
             loadingComplete(registration.submit);
             $.each(registration, removePreviousErrors);
             registration.submit.prop('disabled', true);
-            registration.submit.find('span').css('visibility', 'visible');
             
             //Unverified User
             if (!user.emailVerified) {
@@ -301,7 +299,9 @@ auth.onAuthStateChanged(function (user) {
     } else {
         //Default Page (Or signed out)
         $('.home').hide();
+        $('.page').hide();
         $('.login-page').fadeIn();
+        $('body').removeClass('white');
     }
 });
 

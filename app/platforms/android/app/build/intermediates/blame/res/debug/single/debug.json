@@ -40,12 +40,12 @@
         "source": "E:\\Projects\\FASTUber\\app\\platforms\\android\\app\\src\\main\\res\\drawable-land-mdpi\\screen.png"
     },
     {
-        "merged": "E:\\Projects\\FASTUber\\app\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-xxxhdpi_screen.png.flat",
-        "source": "E:\\Projects\\FASTUber\\app\\platforms\\android\\app\\src\\main\\res\\drawable-port-xxxhdpi\\screen.png"
-    },
-    {
         "merged": "E:\\Projects\\FASTUber\\app\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_icon.png.flat",
         "source": "E:\\Projects\\FASTUber\\app\\platforms\\android\\app\\src\\main\\res\\mipmap-xhdpi\\icon.png"
+    },
+    {
+        "merged": "E:\\Projects\\FASTUber\\app\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-xxxhdpi_screen.png.flat",
+        "source": "E:\\Projects\\FASTUber\\app\\platforms\\android\\app\\src\\main\\res\\drawable-port-xxxhdpi\\screen.png"
     },
     {
         "merged": "E:\\Projects\\FASTUber\\app\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_icon.png.flat",

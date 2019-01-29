@@ -17,5 +17,8 @@
             <path url="/__/auth/callback" />
         </host>
     </universal-links>
+    <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+        <string>Need location access to find drivers nearby.</string>
+    </edit-config>
     <preference name="AndroidLaunchMode" value="singleTask" />
 </widget>

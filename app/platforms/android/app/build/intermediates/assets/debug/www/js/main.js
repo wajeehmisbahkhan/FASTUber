@@ -89,7 +89,7 @@ function main () {
 }
 
 //Navbar
-$('nav').click(function (e) {
+$('button.navbar-toggler').click(function (e) {
     $('.navbar-collapse').show('slide');
     e.stopImmediatePropagation();
     $('html').click(hideNav);

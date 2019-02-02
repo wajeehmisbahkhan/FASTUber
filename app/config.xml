@@ -24,9 +24,9 @@
         </host>
     </universal-links>
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
-    <engine name="browser" spec="^5.0.4" />
-    <engine name="android" spec="^7.0.0" />
-    <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
+    <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
         <string>Need location access to find drivers nearby.</string>
     </edit-config>
+    <engine name="browser" spec="^5.0.4" />
+    <engine name="android" spec="^7.0.0" />
 </widget>

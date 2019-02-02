@@ -20,8 +20,8 @@
     <script type="text/javascript" src="js/firebase-app.js"></script>
     <!-- Add additional services that you want to use -->
     <script type="text/javascript" src="js/firebase-auth.js"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-firestore.js"></script>
+    <!--<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-messaging.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-functions.js"></script> -->
     <script type="text/javascript" src="js/firebase.js"></script>
@@ -102,14 +102,17 @@
             </button>
             <div class="collapse navbar-collapse bg-dark">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <!-- <li class="nav-item active">
                 <a class="nav-link" href="#"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp; Dashboard<span class="sr-only">(current)</span></a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                 <a class="nav-link" href="#"><i class="fa fa-user" aria-hidden="true"></i>&nbsp; My Profile</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="#"><i class="fa fa-comments" aria-hidden="true"></i>&nbsp; Messages</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-comment" aria-hidden="true"></i>&nbsp; Feedback</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="#" id="logout"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Logout</a>
@@ -122,18 +125,16 @@
     </div>
     <div class="page">
         <!--Back Wrap-->
-        <nav class="navbar navbar-dark bg-success">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-* navbar-dark bg-success">
+            <!--TODO: Styling-->
+            <button>
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </button>
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                <span class="nav-link page-title">Page Title</span>
-                </li>
-            </ul>
+            <a class="navbar-brand page-title" href="#">Page Title</a>
+
         </nav>
         <div class="content">
-            <!--Dynamically Loaded-->
+        <!--Dynamically Loaded-->
         </div>
     </div>
     <!--ERROR HANDLING-->

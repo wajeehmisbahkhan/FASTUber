@@ -30,12 +30,12 @@ navigator.geolocation.getCurrentPosition(function(position) {
     driverMarkers.push(new google.maps.Marker({
         position: {lat: pos.lat + 0.001, lng: pos.lng + 0.001},
         map: map,
-        icon: '../img/driver_icon.png'
+        icon: './img/driver_icon.png'
     }));
     driverMarkers.push(new google.maps.Marker({
         position: {lat: pos.lat - 0.001, lng: pos.lng - 0.001},
         map: map,
-        icon: '../img/driver_icon.png'
+        icon: './img/driver_icon.png'
     }));
 
     //Add info window on each driver marker

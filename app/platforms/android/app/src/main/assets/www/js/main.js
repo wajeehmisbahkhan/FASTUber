@@ -76,9 +76,9 @@ function main () {
     // showLoading();
     //MapInit is automatically called after loading map
     //TODO: Hide API Key-->
-    // $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBgnlRhU2n5lYuENs-E2dxc9tsAufQZp0g&callback=initMap')
-    //     .done(hideLoading)
-    //     .fail(showInternetStatus);
+    $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBgnlRhU2n5lYuENs-E2dxc9tsAufQZp0g&callback=initMap')
+        .done(hideLoading)
+        .fail(showInternetStatus);
     
     //To open and close a page
     $('.nav-item').click(openPage);
@@ -156,7 +156,9 @@ function loadMessages () {
         var inbox = $('<div class="inbox"></div>');
         var chats = doc.data().chats;
         if (chats.length === 0) {
+            hideLoading();
             inbox.append(foreverAlone());
+            $('document').append(inbox);
             return;
         }
         //There are chat boxes

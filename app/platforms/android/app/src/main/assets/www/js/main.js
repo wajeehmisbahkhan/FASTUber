@@ -1,3 +1,6 @@
+//GLOBALS
+var auth,
+    db;
 //ERRORS
 function showConfirmation(message) {
     $('.confirmation-cover').css('display', 'flex');
@@ -146,11 +149,7 @@ function closePage (e) {
 
 function loadMessages () {
     showLoading();
-    var db = firebase.firestore();
-    db.settings({
-        timestampsInSnapshots: true
-    });
-
+    //TODO: Make a different screen for displaying messages independantly to send new messages
     var email = firebase.auth().currentUser.email;
     db.collection('users').doc(email).get().then(function (doc) {
         var inbox = $('<div class="inbox"></div>');
@@ -158,7 +157,7 @@ function loadMessages () {
         if (chats.length === 0) {
             hideLoading();
             inbox.append(foreverAlone());
-            $('document').append(inbox);
+            $('.content').append(inbox);
             return;
         }
         //There are chat boxes
@@ -258,10 +257,14 @@ function foreverAlone () {
     //TODO: Add styling
     return $('<img src="./img/forever_alone.png" alt="Forever Alone">');
 }
-function sendMessage (message) {
-    var data = {
-        id: '',
-        messages: []
+function sendMessage (chatId, content) {
+    var message = {
+        content: content,
+        sender: email,
+        status: 'sending'
     }
-    return data;
+    messages.push(message);
+    db.collection('chats').doc(chatId).set({
+        messages: messages
+    });
 }

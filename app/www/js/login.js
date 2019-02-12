@@ -2,8 +2,12 @@ function loadApplication () {
 //Utility Variables
 var emailCheckTimer = null,
     signup = false,
-    resetPasswordEmail,
-    auth = firebase.auth();
+    resetPasswordEmail;
+auth = firebase.auth();
+db = firebase.firestore();
+db.settings({
+    timestampsInSnapshots: true
+});
 //Pre-Submission Validations
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -224,13 +228,21 @@ $('#register').click(function () {
     //Create Email
     auth.createUserWithEmailAndPassword(email, password).then(function (user) {
         signup = true;
-        //Send name to database
+        //Send name to firebase
         user = firebase.auth().currentUser;
         if (user) {
             updateInformation(user, {displayName: name});
         } else {
             showError("Name Error", "There was an error while updating your name in the database.");
         }
+        //DATABASE
+        //Make place in firestore
+        db.collection('users').doc(email).set({
+            chats: []
+        })
+        .catch(function(error) {
+            showError(error.code, error.message);
+        });
     }).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;

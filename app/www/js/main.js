@@ -79,15 +79,15 @@ function main () {
     // showLoading();
     //MapInit is automatically called after loading map
     //TODO: Hide API Key-->
-    $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBgnlRhU2n5lYuENs-E2dxc9tsAufQZp0g&callback=initMap')
-        .done(hideLoading)
-        .fail(showInternetStatus);
+    //$.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBgnlRhU2n5lYuENs-E2dxc9tsAufQZp0g&callback=initMap')
+    //    .done(hideLoading)
+    //    .fail(showInternetStatus);
     
     //To open and close a page
     $('.nav-item').click(openPage);
     $('.page button').click(closePage);
 
-    $('.nav-item:nth-child(2)').click();
+    //$('.nav-item:nth-child(2)').click();
 
     //Home Page
     // var user = firebase.auth().currentUser;
@@ -115,8 +115,9 @@ function hideNav (e) {
 function openPage (e) {
     e.preventDefault();
     var target = $(e.target);
-    //TODO: Logout
-    if (target.css('id') === 'logout') {
+    var title = target.text();
+    title = title.trim(); //Remove any whitespace
+    if (title === "Logout") {
         return;
     }
     //Open page div
@@ -125,12 +126,16 @@ function openPage (e) {
     }}, 'fast');
 
     //The specific kind of page to be opened
-    var title = target.text();
     $('.page-title').text(title);
+    console.log(title);
     //Load Content According to Page
-    //if (title === "Messages") {
+    if (title === "Profile") {
+        
+    } else if (title === "Messages") {
         loadMessages();
-    //}
+    } else if (title === "Feedback") {
+
+    }
 
     //Press back to close
     document.addEventListener("backbutton", closePage);

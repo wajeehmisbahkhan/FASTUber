@@ -238,7 +238,30 @@ $('#register').click(function () {
         //DATABASE
         //Make place in firestore
         db.collection('users').doc(email).set({
-            chats: []
+            chats: [],
+            user: 'Rider',
+            status: 'Hey there! I am using FASTUber.',
+            home: {
+                lat: 24.8607,
+                lng: 67.0011
+            },
+            location: {
+                lat: 24.8607,
+                lng: 67.0011
+            },
+            car: {
+                capacity: 0,
+                riders: 0,
+                description: ''
+            },
+            schedule: {
+                //8 Periods every day
+                monday: [null, null, null, null, null, null, null, null],
+                tuesday: [null, null, null, null, null, null, null, null],
+                wednesday: [null, null, null, null, null, null, null, null],
+                thursday: [null, null, null, null, null, null, null, null],
+                friday: [null, null, null, null, null, null, null, null]
+            }
         })
         .catch(function(error) {
             showError(error.code, error.message);
@@ -310,8 +333,10 @@ auth.onAuthStateChanged(function (user) {
         })
     } else {
         //Default Page (Or signed out)
+        $('.verify-email').hide();
         $('.home').hide();
         $('.page').hide();
+        $('.messenger').hide();
         $('.login-page').fadeIn();
         $('body').removeClass('white');
     }

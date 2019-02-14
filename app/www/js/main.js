@@ -87,6 +87,8 @@ function main () {
     $('.nav-item').click(openPage);
     $('.page button').click(closePage);
 
+    $('.nav-item:nth-child(1)').click();
+
     //$('.nav-item:nth-child(2)').click();
 
     //Home Page
@@ -130,7 +132,7 @@ function openPage (e) {
     console.log(title);
     //Load Content According to Page
     if (title === "Profile") {
-        
+        loadProfile();
     } else if (title === "Messages") {
         loadMessages();
     } else if (title === "Feedback") {
@@ -150,4 +152,8 @@ function closePage (e) {
     }}, 'fast')
     //Prevent from happening twice
     document.removeEventListener('backbutton', closePage);
+}
+
+function loadProfile (user) {
+
 }

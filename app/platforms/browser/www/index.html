@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap4-toggle.min.css">
 </head>
 <body>
     <!-- Cordova -->
@@ -136,6 +137,16 @@
         </nav>
         <div class="content">
         <!--Dynamically Loaded-->
+            <div class="profile editable">
+                <div class="user">
+                    You are a 
+                    <input type="checkbox" checked data-toggle="toggle" data-on="Rider" data-off="Driver" data-onstyle="success" data-offstyle="info">
+                </div>
+                <div class="status">
+                    Status: <span class="message"></span>
+                </div>
+                
+            </div>
         </div>
     </div>
     <!--Messenger-->
@@ -171,5 +182,6 @@
     </script>
     <script type="text/javascript" src="js/login.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/bootstrap4-toggle.min.js"></script>
 </body>
 </html>

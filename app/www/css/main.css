@@ -120,6 +120,7 @@ nav {
 
 
 
+
 .inbox {
     position: relative;
     z-index: 990;
@@ -226,3 +227,9 @@ overflow-y: auto;
 .msg_history>div:first-child {
     margin-top: 10px;
 }
+
+
+
+
+
+/*Profile*/
